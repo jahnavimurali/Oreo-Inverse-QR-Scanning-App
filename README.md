@@ -23,15 +23,15 @@ For the full demo visit this link
 (https://drive.google.com/file/d/1-QQVwk3XjJTdLHLRhVBbeqZQw3E0eRXG/view?usp=sharing)
 
 <p align="center">
-  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/8f98dd26-58e0-422a-8f5f-776d89929864" width="10%" />
-  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/4fef5470-023b-4c15-86b3-1e1195828ade" width="10%" /> 
+  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/8f98dd26-58e0-422a-8f5f-776d89929864" width="30%" />
+  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/4fef5470-023b-4c15-86b3-1e1195828ade" width="30%" /> 
 </p>
 <p align="center">
-  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/3679bc27-494c-4e19-a7a6-32ee748ccf19" width="10%" />
-  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/8187749e-ed24-4865-96d0-babcb8215f43" width="10%" />
+  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/3679bc27-494c-4e19-a7a6-32ee748ccf19" width="30%" />
+  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/8187749e-ed24-4865-96d0-babcb8215f43" width="30%" />
 </p>
 <p align="center">
-  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/103b7b8f-c435-4aa3-bf06-c9615a7bfda1" width="10%" />
+  <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/103b7b8f-c435-4aa3-bf06-c9615a7bfda1" width="30%" />
 </p>
 
 
