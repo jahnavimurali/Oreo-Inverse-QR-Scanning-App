@@ -13,6 +13,9 @@ import {
 } from "firebase/firestore";
 import db from "./components/firebaseconfig";
 import { Camera } from "expo-camera";
+import CryptoJS from "crypto-js";
+
+const SECRET_KEY = "00112233445566778899aabbccddeeff";
 
 export default function ScannerScreen({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -28,9 +31,17 @@ export default function ScannerScreen({ navigation }) {
     getCameraPermissions();
   }, []);
 
+  const decryptData = (encryptedData) => {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, SECRET_KEY);
+    const originalData = bytes.toString(CryptoJS.enc.Utf8);
+    console.log(originalData);
+    return originalData;
+  };
+
   const isValidTicket = (data) => {
     try {
       const ticketData = JSON.parse(data);
+      console.log("JSON", ticketData);
 
       return (
         "bookedSlot" in ticketData &&
@@ -50,8 +61,9 @@ export default function ScannerScreen({ navigation }) {
   const handleBarCodeScanned = async ({ type, data }) => {
     setScanned(true);
     setIsLoading(true);
+    const decryptedData = decryptData(data);
 
-    if (!isValidTicket(data)) {
+    if (!isValidTicket(decryptedData)) {
       Alert.alert("Not a Valid Ticket", "This ticket is not valid.", [
         { text: "OK", onPress: () => setScanned(false) },
       ]);
@@ -59,7 +71,8 @@ export default function ScannerScreen({ navigation }) {
       return;
     }
 
-    const ticketData = JSON.parse(data);
+    const ticketData = JSON.parse(decryptedData);
+    console.log(ticketData);
     const {
       bookedSlot,
       bookingID,
@@ -89,7 +102,9 @@ export default function ScannerScreen({ navigation }) {
 
     try {
       // Fetch user document to verify the booking
+
       const usersRef = collection(db, "Users");
+      console.log(usersRef);
       const q = query(usersRef, where("Email", "==", userEmail));
       const querySnapshot = await getDocs(q);
 

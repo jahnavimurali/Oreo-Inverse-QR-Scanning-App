@@ -11,6 +11,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
+    "crypto-js": "^4.2.0",
     "expo": "~50.0.14",
     "expo-barcode-scanner": "~12.9.3",
     "expo-camera": "~14.1.1",
