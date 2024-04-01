@@ -11,7 +11,7 @@ import {
   addDoc,
   deleteDoc,
 } from "firebase/firestore";
-import db from "./components/firebaseconfig"; // Ensure this path is corrects
+import db from "./components/firebaseconfig";
 import { Camera } from "expo-camera";
 
 export default function ScannerScreen({ navigation }) {
@@ -31,7 +31,7 @@ export default function ScannerScreen({ navigation }) {
   const isValidTicket = (data) => {
     try {
       const ticketData = JSON.parse(data);
-      // Check if all required fields are present
+
       return (
         "bookedSlot" in ticketData &&
         "bookingID" in ticketData &&
@@ -43,7 +43,6 @@ export default function ScannerScreen({ navigation }) {
         "userEmail" in ticketData
       );
     } catch (error) {
-      // If parsing fails or fields are missing
       return false;
     }
   };
@@ -76,8 +75,7 @@ export default function ScannerScreen({ navigation }) {
     const date = dateTime.toISOString().split("T")[0]; // yyyy-mm-dd
     const time = dateTime.toISOString().split("T")[1].slice(0, 5); // hh:mm
 
-    // Formatting to a more readable format without seconds
-    const formattedDate = `${date.split("-").reverse().join("/")} at ${time}`; // dd/mm/yyyy at hh:mm UTC
+    const formattedDate = `${date.split("-").reverse().join("/")} at ${time}`; // dd/mm/yyyy at hh:mm
 
     const alertMessage = `
     Service: ${serviceName}
@@ -94,6 +92,8 @@ export default function ScannerScreen({ navigation }) {
       const usersRef = collection(db, "Users");
       const q = query(usersRef, where("Email", "==", userEmail));
       const querySnapshot = await getDocs(q);
+
+      console.log(q);
 
       if (querySnapshot.empty) {
         Alert.alert("Not a Valid Ticket", "No such user found.", [
@@ -115,7 +115,7 @@ export default function ScannerScreen({ navigation }) {
         return;
       }
 
-      // Handle entry/exit logic
+      // entry/exit logic
       const templeVisitorsRef = collection(db, "TempleVisitors");
       const snapshot = await getDocs(
         query(templeVisitorsRef, where("bookingID", "==", bookingID))
@@ -124,17 +124,16 @@ export default function ScannerScreen({ navigation }) {
 
       if (visitorDoc) {
         // Visitor is exiting
-        const visitorRef = visitorDoc.ref; // This gets the DocumentReference from the snapshot.
+        const visitorRef = visitorDoc.ref;
         await deleteDoc(visitorRef);
-        // Decrease active visitors in the temple document
+
         await updateActiveVisitors(templeID, -noOfPersons);
         Alert.alert("Exit Confirmed", alertMessage, [
           { text: "OK", onPress: () => setScanned(false) },
         ]);
       } else {
-        // Visitor is entering
         await addDoc(templeVisitorsRef, { bookingID, templeID });
-        // Increase active visitors in the temple document
+
         await updateActiveVisitors(templeID, noOfPersons);
         Alert.alert("Entry Confirmed", alertMessage, [
           { text: "OK", onPress: () => setScanned(false) },
@@ -162,8 +161,6 @@ export default function ScannerScreen({ navigation }) {
       transaction.update(templeRef, { activeVisitors: newActiveVisitors });
     });
   };
-
-  // ... the rest of your ScannerScreen component ...
 
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
@@ -205,10 +202,10 @@ const styles = StyleSheet.create({
   },
   cameraContainer: {
     margin: 40,
-    height: 370, // Adjust the height and width
-    width: 370, // as per your requirement
+    height: 370,
+    width: 370,
     overflow: "hidden",
-    borderRadius: 20, // Rounded corners for the camera view
+    borderRadius: 20,
     backgroundColor: "black",
   },
 });
