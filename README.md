@@ -2,7 +2,7 @@
 
 ## *IMPORTANT*!! Our solution includes two other apps as well, please visit the following repos
 ### - [Oreo Inverse Admin Portal WebApp](https://github.com/jahnavimurali/Oreo-Inverse-TemplePortal-WebApp)
-### - [Oreo Inverse User App](https://github.com/jahnavimurali/Oreo-Inverse-HaXplore-24))
+### - [Oreo Inverse User App](https://github.com/jahnavimurali/Oreo-Inverse-HaXplore-24)
 
 ## Project Vihara: QR Scanning App
 
@@ -33,6 +33,11 @@ For the full demo visit this link
 <p>
   <img src="https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/103b7b8f-c435-4aa3-bf06-c9615a7bfda1" width="30%" />
 </p>
+
+## Integrating Cryptography
+![image](https://github.com/jahnavimurali/Oreo-Inverse-QR-Scanning-App/assets/60043776/50e3c23d-a387-4a63-b521-e1563ba05f16)
+
+
 
 
 
